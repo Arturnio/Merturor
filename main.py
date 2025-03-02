@@ -1,8 +1,7 @@
 from fastapi import FastAPI
-from backend.routes import users, workouts  # Добавили "backend."
+from backend.routes import users, workouts  # Импорт роутеров
 
 app = FastAPI()
-
 
 @app.get("/")
 async def general():
@@ -16,5 +15,4 @@ async def ping():
 app.include_router(users.router, prefix="/users", tags=["Users"])
 app.include_router(workouts.router, prefix="/workouts", tags=["Workouts"])
 
-
-print(app.routes)
+print("Маршруты приложения:", app.routes)  # Отладка!
